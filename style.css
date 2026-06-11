@@ -205,6 +205,17 @@ main {
 .tab-link {
   text-decoration: none;
   margin-left: auto;
+  border-color: var(--color-accent) !important;
+  color: var(--color-accent) !important;
+  background: var(--color-accent-dim) !important;
+  box-shadow: 0 0 12px var(--color-accent-glow);
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.tab-link:hover {
+  background: rgba(0, 180, 255, 0.2) !important;
+  box-shadow: 0 0 20px var(--color-accent-glow);
 }
 
 /* ─── Tab panel visibility ───────────────────────────────────────────── */
