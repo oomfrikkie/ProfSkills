@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Derjen Frick — Professional Skills Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-brand">
+      <span class="nav-brand-name">Derjen Frick</span>
+      <span class="nav-brand-sub">Professional Skills Portfolio</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#" class="nav-link active" data-target="reflection">Reflection</a></li>
+      <li><a href="#" class="nav-link" data-target="pdp">PDP</a></li>
+      <li><a href="#" class="nav-link" data-target="offmans">Offmans</a></li>
+      <li><a href="#" class="nav-link" data-target="swot">SWOT</a></li>
+      <li><a href="#" class="nav-link" data-target="feedback">Feedback</a></li>
+    </ul>
+  </nav>
+
+  <main>
+
+    <!-- Reflection -->
+    <section id="reflection" class="section active">
+      <div class="section-header">
+        <h2>Reflection</h2>
+        <p class="section-subtitle">Year 2 &mdash; Semester 2</p>
+      </div>
+      <div class="pdf-container">
+        <iframe
+          src="PDP Draft semester2.pdf"
+          class="pdf-viewer"
+          title="Reflection Document"
+        ></iframe>
+      </div>
+    </section>
+
+    <!-- PDP (dual viewer with tabs) -->
+    <section id="pdp" class="section">
+      <div class="section-header">
+        <h2>PDP</h2>
+        <p class="section-subtitle">Year 2 &mdash; Semester 2</p>
+      </div>
+
+      <div class="tab-bar">
+        <button class="tab-btn active" data-tab="pdp-doc">PDP</button>
+        <button class="tab-btn" data-tab="final-doc">Final Document</button>
+      </div>
+
+      <div id="pdp-doc" class="tab-panel active pdf-container">
+        <iframe
+          src="PDP Draft semester2.pdf"
+          class="pdf-viewer"
+          title="PDP Document"
+        ></iframe>
+      </div>
+
+      <div id="final-doc" class="tab-panel pdf-container">
+        <iframe
+          src="PDP Draft semester2.pdf"
+          class="pdf-viewer"
+          title="Final Document"
+        ></iframe>
+      </div>
+    </section>
+
+    <!-- Offmans -->
+    <section id="offmans" class="section">
+      <div class="section-header">
+        <h2>Offmans</h2>
+        <p class="section-subtitle">Year 2 &mdash; Semester 2</p>
+      </div>
+      <div class="pdf-container">
+        <iframe
+          src="PDP Draft semester2.pdf"
+          class="pdf-viewer"
+          title="Offmans Document"
+        ></iframe>
+      </div>
+    </section>
+
+    <!-- SWOT -->
+    <section id="swot" class="section">
+      <div class="section-header">
+        <h2>SWOT</h2>
+        <p class="section-subtitle">Year 2 &mdash; Semester 2</p>
+      </div>
+      <div class="pdf-container">
+        <iframe
+          src="PDP Draft semester2.pdf"
+          class="pdf-viewer"
+          title="SWOT Analysis"
+        ></iframe>
+      </div>
+    </section>
+
+    <!-- Feedback -->
+    <section id="feedback" class="section">
+      <div class="section-header">
+        <h2>Feedback</h2>
+        <p class="section-subtitle">Year 2 &mdash; Semester 2</p>
+      </div>
+      <div class="pdf-container">
+        <iframe
+          src="PDP Draft semester2.pdf"
+          class="pdf-viewer"
+          title="Feedback Document"
+        ></iframe>
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    // --- Section switching ---
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('.section');
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', e => {
+        e.preventDefault();
+        const target = link.dataset.target;
+
+        navLinks.forEach(l => l.classList.remove('active'));
+        sections.forEach(s => s.classList.remove('active'));
+
+        link.classList.add('active');
+        document.getElementById(target).classList.add('active');
+      });
+    });
+
+    // --- PDP tab switching ---
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const tabPanels = document.querySelectorAll('.tab-panel');
+
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = btn.dataset.tab;
+
+        tabBtns.forEach(b => b.classList.remove('active'));
+        tabPanels.forEach(p => p.classList.remove('active'));
+
+        btn.classList.add('active');
+        document.getElementById(target).classList.add('active');
+      });
+    });
+  </script>
+
+</body>
+</html>
