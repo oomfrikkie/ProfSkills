@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mv derjen_frick_cv.pdf pdf/)",
+      "Bash(mv \"PDP Draft semester2.pdf\" pdf/)",
+      "Bash(mv PDPsemester2.pdf pdf/)",
+      "Bash(mv OFMANS.pdf pdf/)",
+      "Bash(mv ProjectPlan.pdf pdf/)"
+    ]
+  }
+}
