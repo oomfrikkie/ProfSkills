@@ -202,6 +202,11 @@ main {
   box-shadow: 0 0 10px var(--color-accent-glow);
 }
 
+.tab-link {
+  text-decoration: none;
+  margin-left: auto;
+}
+
 /* ─── Tab panel visibility ───────────────────────────────────────────── */
 .tab-panel {
   display: none;
@@ -274,18 +279,9 @@ main {
   border-radius: 4px;
   letter-spacing: 0.03em;
   text-transform: uppercase;
-}
-
-.toc-badge.ready {
-  background: rgba(0, 180, 255, 0.12);
+  background: rgba(0, 180, 255, 0.08);
   color: var(--color-accent);
-  border: 1px solid rgba(0, 180, 255, 0.25);
-}
-
-.toc-badge.placeholder {
-  background: rgba(255, 255, 255, 0.05);
-  color: var(--color-muted);
-  border: 1px solid var(--color-border);
+  border: 1px solid rgba(0, 180, 255, 0.2);
 }
 
 /* ─── Responsive ─────────────────────────────────────────────────────── */
