@@ -17,20 +17,110 @@
       <span class="nav-brand-sub">Professional Skills Portfolio</span>
     </div>
     <ul class="nav-links">
-      <li><a href="#" class="nav-link active" data-target="reflection">Reflection</a></li>
+      <li><a href="#" class="nav-link active" data-target="home">Home</a></li>
+      <li><a href="#" class="nav-link" data-target="reflection">Reflection</a></li>
       <li><a href="#" class="nav-link" data-target="pdp">PDP</a></li>
       <li><a href="#" class="nav-link" data-target="offmans">Offmans</a></li>
       <li><a href="#" class="nav-link" data-target="swot">SWOT</a></li>
       <li><a href="#" class="nav-link" data-target="feedback">Feedback</a></li>
       <li><a href="#" class="nav-link" data-target="cv">CV</a></li>
       <li><a href="#" class="nav-link" data-target="projectplan">Project Plan</a></li>
+      <li><a href="#" class="nav-link" data-target="resit">Resit</a></li>
     </ul>
   </nav>
 
   <main>
 
+    <!-- Home -->
+    <section id="home" class="section active">
+      <div class="section-header">
+        <h2>Portfolio Overview</h2>
+        <p class="section-subtitle">Year 2 &mdash; Semester 2 &mdash; Professional Skills</p>
+      </div>
+
+      <div class="home-intro">
+        <p>Welcome to my Professional Skills portfolio. Use the navigation above or the cards below to browse each section.</p>
+      </div>
+
+      <div class="toc-grid">
+
+        <div class="toc-card" data-target="reflection">
+          <div class="toc-card-icon">01</div>
+          <div class="toc-card-body">
+            <h3>Reflection</h3>
+            <p>Personal reflection document for Semester 2.</p>
+            <span class="toc-badge placeholder">Placeholder</span>
+          </div>
+        </div>
+
+        <div class="toc-card" data-target="pdp">
+          <div class="toc-card-icon">02</div>
+          <div class="toc-card-body">
+            <h3>PDP</h3>
+            <p>Personal Development Plan — draft and final document.</p>
+            <span class="toc-badge ready">2 documents</span>
+          </div>
+        </div>
+
+        <div class="toc-card" data-target="offmans">
+          <div class="toc-card-icon">03</div>
+          <div class="toc-card-body">
+            <h3>Offmans</h3>
+            <p>Offmans assessment document.</p>
+            <span class="toc-badge ready">Ready</span>
+          </div>
+        </div>
+
+        <div class="toc-card" data-target="swot">
+          <div class="toc-card-icon">04</div>
+          <div class="toc-card-body">
+            <h3>SWOT</h3>
+            <p>Strengths, Weaknesses, Opportunities and Threats analysis.</p>
+            <span class="toc-badge placeholder">Placeholder</span>
+          </div>
+        </div>
+
+        <div class="toc-card" data-target="feedback">
+          <div class="toc-card-icon">05</div>
+          <div class="toc-card-body">
+            <h3>Feedback</h3>
+            <p>360 Degrees, Client (Cephalo) and Teacher (Martijn) feedback.</p>
+            <span class="toc-badge ready">3 documents</span>
+          </div>
+        </div>
+
+        <div class="toc-card" data-target="cv">
+          <div class="toc-card-icon">06</div>
+          <div class="toc-card-body">
+            <h3>CV</h3>
+            <p>Current curriculum vitae.</p>
+            <span class="toc-badge ready">Ready</span>
+          </div>
+        </div>
+
+        <div class="toc-card" data-target="projectplan">
+          <div class="toc-card-icon">07</div>
+          <div class="toc-card-body">
+            <h3>Project Plan</h3>
+            <p>Semester 2 project plan document.</p>
+            <span class="toc-badge ready">Ready</span>
+          </div>
+        </div>
+
+        <div class="toc-card" data-target="resit">
+          <div class="toc-card-icon">08</div>
+          <div class="toc-card-body">
+            <h3>Resit</h3>
+            <p>Resit submission document.</p>
+            <span class="toc-badge placeholder">Placeholder</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
     <!-- Reflection -->
-    <section id="reflection" class="section active">
+    <section id="reflection" class="section">
       <div class="section-header">
         <h2>Reflection</h2>
         <p class="section-subtitle">Year 2 &mdash; Semester 2</p>
@@ -126,7 +216,7 @@
 
       <div id="feedback-client" class="tab-panel pdf-container">
         <iframe
-          src="pdf/PDP Draft semester2.pdf"
+          src="pdf/ClientFeedback.pdf"
           class="pdf-viewer"
           title="Client Feedback"
         ></iframe>
@@ -134,7 +224,7 @@
 
       <div id="feedback-teacher" class="tab-panel pdf-container">
         <iframe
-          src="pdf/PDP Draft semester2.pdf"
+          src="pdf/MartijnFeedback.pdf"
           class="pdf-viewer"
           title="Teacher Feedback"
         ></iframe>
@@ -171,24 +261,47 @@
       </div>
     </section>
 
+    <!-- Resit -->
+    <section id="resit" class="section">
+      <div class="section-header">
+        <h2>Resit</h2>
+        <p class="section-subtitle">Year 2 &mdash; Semester 2</p>
+      </div>
+      <div class="pdf-container">
+        <iframe
+          src="pdf/PDP Draft semester2.pdf"
+          class="pdf-viewer"
+          title="Resit Document"
+        ></iframe>
+      </div>
+    </section>
+
   </main>
 
   <script>
-    // --- Section switching ---
+    // --- Section switching (nav links + TOC cards) ---
     const navLinks = document.querySelectorAll('.nav-link');
     const sections = document.querySelectorAll('.section');
+
+    function navigateTo(target) {
+      navLinks.forEach(l => l.classList.remove('active'));
+      sections.forEach(s => s.classList.remove('active'));
+
+      const link = document.querySelector(`.nav-link[data-target="${target}"]`);
+      if (link) link.classList.add('active');
+      const section = document.getElementById(target);
+      if (section) section.classList.add('active');
+    }
 
     navLinks.forEach(link => {
       link.addEventListener('click', e => {
         e.preventDefault();
-        const target = link.dataset.target;
-
-        navLinks.forEach(l => l.classList.remove('active'));
-        sections.forEach(s => s.classList.remove('active'));
-
-        link.classList.add('active');
-        document.getElementById(target).classList.add('active');
+        navigateTo(link.dataset.target);
       });
+    });
+
+    document.querySelectorAll('.toc-card').forEach(card => {
+      card.addEventListener('click', () => navigateTo(card.dataset.target));
     });
 
     // --- Tab switching (scoped per section) ---
@@ -201,7 +314,6 @@
           btns.forEach(b => b.classList.remove('active'));
           btn.classList.add('active');
 
-          // only toggle panels that belong to this tab-bar's parent section
           const section = bar.closest('.section');
           section.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
           document.getElementById(target).classList.add('active');
