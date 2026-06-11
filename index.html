@@ -109,11 +109,34 @@
         <h2>Feedback</h2>
         <p class="section-subtitle">Year 2 &mdash; Semester 2</p>
       </div>
-      <div class="pdf-container">
+
+      <div class="tab-bar">
+        <button class="tab-btn active" data-tab="feedback-360">360 Degrees</button>
+        <button class="tab-btn" data-tab="feedback-client">Client</button>
+        <button class="tab-btn" data-tab="feedback-teacher">Teacher</button>
+      </div>
+
+      <div id="feedback-360" class="tab-panel active pdf-container">
         <iframe
           src="pdf/PDP Draft semester2.pdf"
           class="pdf-viewer"
-          title="Feedback Document"
+          title="360 Degrees Feedback"
+        ></iframe>
+      </div>
+
+      <div id="feedback-client" class="tab-panel pdf-container">
+        <iframe
+          src="pdf/PDP Draft semester2.pdf"
+          class="pdf-viewer"
+          title="Client Feedback"
+        ></iframe>
+      </div>
+
+      <div id="feedback-teacher" class="tab-panel pdf-container">
+        <iframe
+          src="pdf/PDP Draft semester2.pdf"
+          class="pdf-viewer"
+          title="Teacher Feedback"
         ></iframe>
       </div>
     </section>
@@ -168,19 +191,21 @@
       });
     });
 
-    // --- PDP tab switching ---
-    const tabBtns = document.querySelectorAll('.tab-btn');
-    const tabPanels = document.querySelectorAll('.tab-panel');
+    // --- Tab switching (scoped per section) ---
+    document.querySelectorAll('.tab-bar').forEach(bar => {
+      const btns = bar.querySelectorAll('.tab-btn');
+      btns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const target = btn.dataset.tab;
 
-    tabBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const target = btn.dataset.tab;
+          btns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
 
-        tabBtns.forEach(b => b.classList.remove('active'));
-        tabPanels.forEach(p => p.classList.remove('active'));
-
-        btn.classList.add('active');
-        document.getElementById(target).classList.add('active');
+          // only toggle panels that belong to this tab-bar's parent section
+          const section = bar.closest('.section');
+          section.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+          document.getElementById(target).classList.add('active');
+        });
       });
     });
   </script>
